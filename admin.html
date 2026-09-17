@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Quản lý đặt sân
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="admin.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <header class="admin-header">
+
+        <div>
+
+            <h1>
+                ⚽ Quản lý đặt sân
+            </h1>
+
+            <p>
+                Quản lý các yêu cầu đặt sân từ khách hàng
+            </p>
+
+        </div>
+
+
+        <a
+            href="datsan.html"
+            class="back-button">
+
+            ← Về trang đặt sân
+
+        </a>
+
+    </header>
+
+
+    <!-- =========================
+         MAIN
+    ========================== -->
+
+    <main class="admin-container">
+
+
+        <!-- =========================
+             THỐNG KÊ
+        ========================== -->
+
+        <section class="stats">
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    📋
+                </div>
+
+                <div>
+
+                    <span>
+                        Tổng đơn
+                    </span>
+
+                    <strong id="total">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    🟡
+                </div>
+
+                <div>
+
+                    <span>
+                        Chờ xác nhận
+                    </span>
+
+                    <strong id="pending">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    🟢
+                </div>
+
+                <div>
+
+                    <span>
+                        Đã xác nhận
+                    </span>
+
+                    <strong id="confirmed">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    🔴
+                </div>
+
+                <div>
+
+                    <span>
+                        Đã hủy
+                    </span>
+
+                    <strong id="cancelled">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- =========================
+             BẢNG ĐƠN
+        ========================== -->
+
+        <section class="panel">
+
+
+            <div class="panel-header">
+
+                <div>
+
+                    <h2>
+                        Danh sách đơn đặt sân
+                    </h2>
+
+                    <p>
+                        Các đơn khách hàng đã gửi
+                    </p>
+
+                </div>
+
+
+                <div class="toolbar">
+
+                    <input
+                        type="text"
+                        id="search"
+                        placeholder="🔎 Tìm kiếm đơn...">
+
+
+                    <select id="statusFilter">
+
+                        <option value="">
+                            Tất cả trạng thái
+                        </option>
+
+                        <option value="pending">
+                            Chờ xác nhận
+                        </option>
+
+                        <option value="confirmed">
+                            Đã xác nhận
+                        </option>
+
+                        <option value="cancelled">
+                            Đã hủy
+                        </option>
+
+                    </select>
+
+
+                    <button
+                        class="clear-button"
+                        onclick="clearAll()">
+
+                        🗑 Xóa tất cả
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 TABLE
+            ========================== -->
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Mã đơn
+                            </th>
+
+                            <th>
+                                Khách hàng
+                            </th>
+
+                            <th>
+                                Số điện thoại
+                            </th>
+
+                            <th>
+                                Sân
+                            </th>
+
+                            <th>
+                                Ngày
+                            </th>
+
+                            <th>
+                                Giờ
+                            </th>
+
+                            <th>
+                                Ghi chú
+                            </th>
+
+                            <th>
+                                Trạng thái
+                            </th>
+
+                            <th>
+                                Thao tác
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody
+                        id="bookingTable">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            <!-- KHÔNG CÓ DỮ LIỆU -->
+
+            <div
+                class="empty-admin"
+                id="emptyAdmin">
+
+                📭
+
+                <h3>
+                    Chưa có đơn đặt sân
+                </h3>
+
+                <p>
+                    Khi khách hàng đặt sân,
+                    đơn sẽ xuất hiện tại đây.
+                </p>
+
+            </div>
+
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="supabase.js"></script>
+
+<script src="admin.js"></script>
+
+
+</body>
+
+</html>
